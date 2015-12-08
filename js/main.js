@@ -32,7 +32,7 @@ var project;
             this.shapeCurve.mouseEnabled = true;
             this.stageEaselJS.addChild(this.shapeCurve);
             //document.body.appendChild(canvasForEasel)
-            var max = 100; // --< shoud be 100
+            var max = 111; // --< shoud be 100
             for (var i = 0; i < max; i++) {
                 var p = new Path();
                 p.setup(0, 0, 0.1 + i / max * 0.05, (20 * Math.random() * Math.random()) >> 0, i / max);
@@ -84,7 +84,7 @@ var project;
                 var curveEndX = (p0x + p1x) / 2;
                 var curveEndY = (p0y + p1y) / 2;
                 // カーブは中間点を結ぶ。マウスの座標は制御点として扱う。
-                gCurve.beginStroke(createjs.Graphics.getHSL((new Date().getTime() / 10) + (220 + (p.percent) * 90), 35, 20 + Math.random() * 30)).moveTo(curveStartX, curveStartY).curveTo(p1x, p1y, 22, 55).endStroke();
+                gCurve.beginStroke(createjs.Graphics.getHSL((new Date().getTime() / 10) + (220 + (p.percent) * 90), 35, 20 + Math.random() * 30)).moveTo(curveStartX, curveStartY).curveTo(p1x, p1y, p0x, p0y).endStroke();
             }
             var contextForDisplay = this.canvasForDisplay.getContext("2d");
             var contextFadeout = this.canvasForFadeout.getContext("2d");
