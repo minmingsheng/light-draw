@@ -32,7 +32,7 @@ var project;
             this.shapeCurve.mouseEnabled = true;
             this.stageEaselJS.addChild(this.shapeCurve);
             //document.body.appendChild(canvasForEasel)
-            var max = 111; // --< shoud be 100
+            var max = 10; // --< shoud be 100
             for (var i = 0; i < max; i++) {
                 var p = new Path();
                 p.setup(0, 0, 0.1 + i / max * 0.05, (20 * Math.random() * Math.random()) >> 0, i / max);
@@ -52,13 +52,13 @@ var project;
         Main.prototype.handleTick = function () {
             var gCurve = this.shapeCurve.graphics;
             // 描画をリセット
-            //            gCurve.clear().setStrokeStyle(1);
-            gCurve.clear();
+            gCurve.clear().setStrokeStyle(1);
+            //            gCurve.clear();
             var stageX = this.stageForDisplay.mouseX;
             var stageY = this.stageForDisplay.mouseY;
-            console.log(stageX);
-            console.log(stageY);
-
+            //            console.log(stageX);
+            //            console.log(stageY);
+            //            console.log(this.mousePositions.length);
             this.mousePositions.unshift(new createjs.Point(stageX, stageY));
             for (var i = 0; i < this.pathList.length; i++) {
                 var p = this.pathList[i];
@@ -89,7 +89,7 @@ var project;
             var contextForDisplay = this.canvasForDisplay.getContext("2d");
             var contextFadeout = this.canvasForFadeout.getContext("2d");
             contextForDisplay.setTransform(1, 0, 0, 1, 0, 0);
-            contextForDisplay.globalAlpha = 0.97;
+            contextForDisplay.globalAlpha = 1;
             contextForDisplay.clearRect(0, 0, innerWidth, innerHeight);
             contextForDisplay.drawImage(this.canvasForFadeout, 0, 0);
             contextFadeout.clearRect(0, 0, innerWidth, innerHeight);
